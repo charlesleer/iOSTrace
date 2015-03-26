@@ -11,7 +11,7 @@
 if [ $# -eq 0 ]
   then
     echo "Please start as sh iOSTrace.sh <number>"
-    echo "Where number is: 29 when using a USB hub that goes to the Mac or 34 when cable is directly connected to the Mac"
+    echo "Where number is: 34 when using a USB hub that goes to the Mac or 29 when cable is directly connected to the Mac"
     echo "eg: sh iOSTrace.sh 34"
     exit 1
 fi
