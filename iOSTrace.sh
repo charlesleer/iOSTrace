@@ -3,12 +3,26 @@
 #charles.leerink@outlook.com
 #
 #
+#v3 fix for using USB hub vs Direct connection
+#
+#
 #find the UDID from systemprofiler assumming just 1 device is connected
-UDID=`system_profiler SPUSBDataType | sed -n -e '/iPad/,/Serial/p' -e '/iPhone/,/Serial/p' | grep "Serial Number:" | awk -F ": " '{print $2}'`
+
+if [ $# -eq 0 ]
+  then
+    echo "Please start as sh iOSTrace.sh <number>"
+    echo "Where number is: 29 when using a USB hub that goes to the Mac or 34 when cable is directly connected to the Mac"
+    echo "eg: sh iOSTrace.sh 34"
+    exit 1
+fi
+
+UDID=`system_profiler SPUSBDataType | sed -n -e '/iPad/,/Serial/p' -e '/iPhone/,/Serial/p' | grep "Serial Number: " | cut -c $1-`
 clear
-echo "Easy iOS Trace"
+echo "Easy iOS Trace v3"
 echo ""
-echo "Using $UDID for Remote Virtual Interface" 
+echo ""
+echo ""
+echo "Using: $UDID for Remote Virtual Interface" 
 rvictl -s $UDID
 echo ""
 echo "Start WireShark and start a capture on the rviX device:"
@@ -18,4 +32,3 @@ echo ""
 read -p "Press [ENTER] to disconnect the RVI"
 rvictl -x $UDID
 exit
-
