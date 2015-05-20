@@ -2,6 +2,7 @@
 #
 #charles.leerink@outlook.com
 #
+#v4 fix the weird construction in v3, now picks the right serial regardless
 #
 #v3 fix for using USB hub vs Direct connection
 #
