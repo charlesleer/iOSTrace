@@ -16,7 +16,7 @@
 #    exit 1
 #fi
 
-UDID=`system_profiler SPUSBDataType | sed -n -e '/iPad/,/Serial/p' -e '/iPhone/,/Serial/p' | grep "Serial Number: " | | sed 's/.*Number://'
+UDID=`system_profiler SPUSBDataType | sed -n -e '/iPad/,/Serial/p' -e '/iPhone/,/Serial/p' | grep "Serial Number: " | sed 's/.*Number://'
 clear
 echo "Easy iOS Trace v3"
 echo ""
